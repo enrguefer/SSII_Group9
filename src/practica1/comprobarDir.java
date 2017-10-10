@@ -30,8 +30,7 @@ public class comprobarDir{
 			for (int x=0;x<ficheros.length;x++){
 		
 				try{
-					FileInputStream fis = new FileInputStream(directorio+metodos.compruebaSys()+ficheros[x]); //Windows
-				  	//FileInputStream fis = new FileInputStream(directorio+"/"+ficheros[x]);	//LINUX
+					FileInputStream fis = new FileInputStream(directorio+metodos.compruebaSys()+ficheros[x]); 
 				  	BufferedInputStream bis = new BufferedInputStream(fis);
 					@SuppressWarnings("resource")
 					DigestInputStream dis =  new DigestInputStream(bis,algorithm);//APLICAMOS LA HUELLA AL FICHERO

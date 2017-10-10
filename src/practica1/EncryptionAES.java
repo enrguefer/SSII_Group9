@@ -30,11 +30,11 @@ public class EncryptionAES
          
             //Escojo modo cifrado o descifrado segun sea el caso
          
-            if (comando1.equals(args[0])){
+           /* if (comando1.equals(args[0])){
                cifrado.init(Cipher.ENCRYPT_MODE, ks);}//MODO CIFRAR
             if (comando2.equals(args[0])){
                cifrado.init(Cipher.DECRYPT_MODE, ks);}//MODO DESCIFRAR
-
+*/
                
             //Leer fichero
       
