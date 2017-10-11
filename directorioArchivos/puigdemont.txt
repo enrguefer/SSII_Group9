@@ -1,4 +1,4 @@
-org.apache.spark.streaming.api.java.JavaDStream@32057e6
+﻿org.apache.spark.streaming.api.java.JavaDStream@32057e6
 -------------------------------------------
 Time: 1506631980000 ms
 -------------------------------------------

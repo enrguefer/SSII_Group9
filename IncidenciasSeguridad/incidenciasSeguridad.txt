@@ -1,0 +1,48 @@
+=================================================
+2017-10-11 19:39:23
+HA CAMBIADO EL HASH del fichero : pruebadirectorio.txt, han modificado el archivo generando el hash: 9E4DEDB0B118803E24F497B18F44A5173160EE49A38B82DF6C0C88408D5CCB1C
+
+FAILED
+
+=================================================
+2017-10-11 19:39:23
+HA CAMBIADO EL HASH del fichero : ssii.txt, han modificado el archivo generando el hash: BDB214A784F407570045018919CF0904F7EB6D905C34B542334D45AAF0C06DD2
+
+FAILED
+
+=================================================
+2017-10-11 19:40:33
+HA CAMBIADO EL HASH del fichero : bd.sql, han modificado el archivo generando el hash: 7039AECEA0830B2FB23FAB18C97260D7B72366B464D67389049008DB54D832EB
+
+FAILED
+
+=================================================
+2017-10-11 19:40:33
+HA CAMBIADO EL HASH del fichero : pruebadirectorio.txt, han modificado el archivo generando el hash: 9E4DEDB0B118803E24F497B18F44A5173160EE49A38B82DF6C0C88408D5CCB1C
+
+FAILED
+
+=================================================
+2017-10-11 19:40:33
+HA CAMBIADO EL HASH del fichero : ssii.txt, han modificado el archivo generando el hash: BDB214A784F407570045018919CF0904F7EB6D905C34B542334D45AAF0C06DD2
+
+FAILED
+
+=================================================
+2017-10-11 19:41:43
+HA CAMBIADO EL HASH del fichero : bd.sql, han modificado el archivo generando el hash: 7039AECEA0830B2FB23FAB18C97260D7B72366B464D67389049008DB54D832EB
+
+FAILED
+
+=================================================
+2017-10-11 19:41:43
+HA CAMBIADO EL HASH del fichero : pruebadirectorio.txt, han modificado el archivo generando el hash: 9E4DEDB0B118803E24F497B18F44A5173160EE49A38B82DF6C0C88408D5CCB1C
+
+FAILED
+
+=================================================
+2017-10-11 19:41:43
+HA CAMBIADO EL HASH del fichero : ssii.txt, han modificado el archivo generando el hash: BDB214A784F407570045018919CF0904F7EB6D905C34B542334D45AAF0C06DD2
+
+FAILED
+

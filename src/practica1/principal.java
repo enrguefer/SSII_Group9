@@ -21,16 +21,20 @@ public class principal {
 		
 		
 		String dirInicial=datosFicheros.get(0);
-		
-		lecturaDirs.leeDirectorios(dirInicial,datosFicheros.get(1),datosFicheros.get(2));//Solo se puede ejecutar 1 vez, crea el Hash de todos los archivos de dirInicial
-		System.out.println("================================");
+		System.out.println("============GENERAMOS LOS HASH DE FICHEROS================");
+		lecturaDirs.leeDirectorios(dirInicial,datosFicheros.get(1),datosFicheros.get(2));
+		System.out.println("==========================================================");
 		try {
-			TimeUnit.SECONDS.sleep(Integer.parseInt(datosFicheros.get(3)));
+			while(true){
+				TimeUnit.SECONDS.sleep(Integer.parseInt(datosFicheros.get(3)));
+				comprobarDir.comprobarHash(dirInicial, "SHA-256",datosFicheros.get(1),datosFicheros.get(2));
+				TimeUnit.SECONDS.sleep(Integer.parseInt(datosFicheros.get(3)));
+			}
+			
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		comprobarDir.comprobarHash(dirInicial, "SHA-256",datosFicheros.get(1),datosFicheros.get(2));//¿Como llamar al Init de comprobarHash?
 
 	}
 
