@@ -14,10 +14,12 @@ import javax.xml.bind.DatatypeConverter;
 
 public class lecturaDirs {
 	
-	public static void leeDirectorios(String directorio) throws NoSuchAlgorithmException, IOException {
+	public static void leeDirectorios(String directorio,String dirHash,String nHash) 
+			throws NoSuchAlgorithmException, IOException {
+		
 		MessageDigest algorithm=MessageDigest.getInstance("SHA-256");	//CREAMOS LA HUELLA SHA-256
 		File dir = new File(directorio);	//DIRECTORIO QUE VAMOS A MONITORIZAR
-		File dirlog=new File("logs"+metodos.compruebaSys()+"l.txt");
+		File dirlog=new File(dirHash+metodos.compruebaSys()+nHash);
 		
 		BufferedWriter bw;
 		
@@ -45,17 +47,15 @@ public class lecturaDirs {
 					
 					//escritura en logs ---
 					
-					if(i==ficheros.length-1)
-						bw.write("["+ficheros[i]+","+DatatypeConverter.printHexBinary(digest)+"]\n");
-					else
-						bw.write("["+ficheros[i]+","+DatatypeConverter.printHexBinary(digest)+"],\n");
+					bw.write("["+ficheros[i]+","+DatatypeConverter.printHexBinary(digest)+"]\n");
+					
 				    
 				    //fin escritura ----
 				    
 					System.out.println("Fichero "+ficheros[i]+", HASH: "+DatatypeConverter.printHexBinary(digest));
 					
 				}catch(java.io.FileNotFoundException e) {
-					leeDirectorios(directorio+metodos.compruebaSys()+ficheros[i]);
+					leeDirectorios(directorio+metodos.compruebaSys()+ficheros[i],dirHash,nHash);
 				}
 			
 			}//fin bloque for

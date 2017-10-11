@@ -14,11 +14,13 @@ import javax.xml.bind.DatatypeConverter;
 
 public class comprobarDir{
 
-	public static void comprobarHash(String directorio, String huella) throws NoSuchAlgorithmException, IOException{
+	public static void comprobarHash(String directorio, String huella,String dirHash,String nHash) 
+			throws NoSuchAlgorithmException, IOException{
+		
 		System.out.println("DIRECTORIO : " +directorio);
 		MessageDigest algorithm=MessageDigest.getInstance(huella);//CREAMOS LA HUELLA SHA-256
 		File dir = new File(directorio);
-		File dirlog=new File("logs"+metodos.compruebaSys()+"l.txt");
+		File dirlog=new File(dirHash+metodos.compruebaSys()+nHash);
 		
 		
 		String[] ficheros = dir.list();
@@ -74,7 +76,7 @@ public class comprobarDir{
 		        	}
 
 				}catch(java.io.FileNotFoundException e){
-					comprobarHash(directorio+metodos.compruebaSys()+ficheros[x],huella);
+					comprobarHash(directorio+metodos.compruebaSys()+ficheros[x],huella,dirHash,nHash);
 				}
 	
 			}
