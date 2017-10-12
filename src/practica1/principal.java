@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -17,9 +18,11 @@ public class principal {
 	public static void main(String[] args) throws NoSuchAlgorithmException, IOException {
 		String rutaConf="configuracion.txt";
 		List<String>datosFicheros=null;
+		List<Integer>auxiliar=new ArrayList<Integer>();
+		Boolean semaforoKPI=false;
 		
 		//pruebas de cifrado
-		File log=new File("logs/l.txt");
+	/*	File log=new File("logs/l.txt");
 		File log2=new File("logs/l2.txt");
 		try {
 			metodos.cifraAES(log, log2);
@@ -27,7 +30,7 @@ public class principal {
 				| InvalidKeySpecException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
-		}
+		}*/
 				
 		//------------------
 		
@@ -47,7 +50,15 @@ public class principal {
 		try {
 			while(true){
 				TimeUnit.SECONDS.sleep(Integer.parseInt(datosFicheros.get(3)));
-				comprobarDir.comprobarHash(dirInicial, "SHA-256",datosFicheros.get(1),datosFicheros.get(2),0,0);
+				
+				//comprobar fecha horas y tal del kpi
+				
+				comprobarDir.comprobarHash(dirInicial, "SHA-256",datosFicheros.get(1),datosFicheros.get(2),
+						0,0,auxiliar,dirInicial,semaforoKPI);
+				
+				if(!semaforoKPI)
+					semaforoKPI=true;
+				
 				TimeUnit.SECONDS.sleep(Integer.parseInt(datosFicheros.get(3)));
 			}
 			

@@ -1,4 +1,4 @@
 1)Ruta que analiza:directorioArchivos
 2)Directorio del fichero hash:logs
 3)Nombre del fichero hash sin extensión:logHash
-4)Frecuencia en segundos para comprobar fichero hash:35
+4)Frecuencia en segundos para comprobar fichero hash:10
