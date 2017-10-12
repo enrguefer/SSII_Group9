@@ -27,7 +27,7 @@ public class principal {
 		try {
 			while(true){
 				TimeUnit.SECONDS.sleep(Integer.parseInt(datosFicheros.get(3)));
-				comprobarDir.comprobarHash(dirInicial, "SHA-256",datosFicheros.get(1),datosFicheros.get(2));
+				comprobarDir.comprobarHash(dirInicial, "SHA-256",datosFicheros.get(1),datosFicheros.get(2),0,0);
 				TimeUnit.SECONDS.sleep(Integer.parseInt(datosFicheros.get(3)));
 			}
 			

@@ -14,19 +14,19 @@ import javax.xml.bind.DatatypeConverter;
 
 public class comprobarDir{
 
-	public static void comprobarHash(String dirInicial, String huella, String dirHash,String nHash) throws NoSuchAlgorithmException, IOException{
+	public static void comprobarHash(String dirInicial, String huella, String dirHash,String nHash,int hashSuccess, int hashFailed) throws NoSuchAlgorithmException, IOException{
 			//System.out.println("DIRECTORIO : " +directorio);
 			MessageDigest algorithm=MessageDigest.getInstance(huella);//CREAMOS LA HUELLA SHA-256
 			File dir = new File(dirInicial);
 			File dirlog=new File(dirHash+metodos.compruebaSys()+nHash);
 			String[] ficheros = dir.list();
 			
+			
 			if (ficheros == null){
 				  System.out.println("No hay ficheros en el directorio especificado");
 				
 			}else {
 				for (int x=0;x<ficheros.length;x++){
-			
 					try{
 						FileInputStream fis = new FileInputStream(dirInicial+metodos.compruebaSys()+ficheros[x]); 
 					  	BufferedInputStream bis = new BufferedInputStream(fis);
@@ -65,20 +65,32 @@ public class comprobarDir{
 				        if(control==true){
 				        	String z = "no ha cambiado el hash del fichero: "+fichero+"\n";
 				        	System.out.println(z);
+				        	hashSuccess++;
+				        	System.out.println("Nº Success2: "+hashSuccess);
 			        		//EscribeIncidencia.escribeIncidencia(z, "SUCCESS");
 			        	}else{
 			        		
 			        		String y = "HA CAMBIADO EL HASH del fichero : "+fichero+", han modificado el archivo generando el hash: "+DatatypeConverter.printHexBinary(digest)+"\n";
 			        		System.out.println(y);
+			        		hashFailed++;
 			        		EscribeIncidencia.escribeIncidencia(y, "FAILED");
 				        
 			        	}
 
 					}catch(java.io.FileNotFoundException e){
-						comprobarHash(dirInicial+metodos.compruebaSys()+ficheros[x],huella,dirHash,nHash);
+						System.out.println("Nº Success2: "+hashSuccess);
+						comprobarHash(dirInicial+metodos.compruebaSys()+ficheros[x],huella,dirHash,nHash,hashSuccess,hashFailed);
 					}
 		
 				}
 			}
+			if(dirInicial.equals("directorioArchivos")){
+				int totalFicheros = cuentaLineasFichero.cuentaLineas(dirHash, nHash);
+				System.out.println("Nº Success: "+hashSuccess);
+				System.out.println("Nº Failed: "+hashFailed);
+				System.out.println("Nº Files: "+totalFicheros);
+				KpiCalculator.CalculaKPI(hashSuccess,hashFailed, totalFicheros);
+			}
+			
 	}
 }

@@ -46,3 +46,51 @@ HA CAMBIADO EL HASH del fichero : ssii.txt, han modificado el archivo generando 
 
 FAILED
 
+=================================================
+2017-10-12 14:02:33
+HA CAMBIADO EL HASH del fichero : ssii.txt, han modificado el archivo generando el hash: AE9A75C79F39589B2A7D606E57D1F8666DF6BC4A69F1B83EA6EF74FB1C315F0A
+
+FAILED
+
+=================================================
+2017-10-12 14:06:08
+HA CAMBIADO EL HASH del fichero : ssii.txt, han modificado el archivo generando el hash: 655E786674D9D3E77BC05ED1DE37B4B6BC89F788829F9F3C679E7687B410C89B
+
+FAILED
+
+=================================================
+2017-10-12 14:13:53
+HA CAMBIADO EL HASH del fichero : ssii.txt, han modificado el archivo generando el hash: 63C33596074D6294663A7C76959A398716F828F609EF1CEAF476CD43557DA85E
+
+FAILED
+
+=================================================
+2017-10-12 14:15:03
+HA CAMBIADO EL HASH del fichero : pruebadirectorio.txt, han modificado el archivo generando el hash: 0F06110089FD3C129A5C629FE5A0B4AD8C878487C3BCA85BB998E9E3ACCFFB50
+
+FAILED
+
+=================================================
+2017-10-12 14:15:03
+HA CAMBIADO EL HASH del fichero : ssii.txt, han modificado el archivo generando el hash: 63C33596074D6294663A7C76959A398716F828F609EF1CEAF476CD43557DA85E
+
+FAILED
+
+=================================================
+2017-10-12 14:16:13
+HA CAMBIADO EL HASH del fichero : claves.pwd, han modificado el archivo generando el hash: 1A8CE3075C49BFD7A1CBB9EFBEC58D9D079885AB449416813FD333FE89C88083
+
+FAILED
+
+=================================================
+2017-10-12 14:16:13
+HA CAMBIADO EL HASH del fichero : pruebadirectorio.txt, han modificado el archivo generando el hash: 0F06110089FD3C129A5C629FE5A0B4AD8C878487C3BCA85BB998E9E3ACCFFB50
+
+FAILED
+
+=================================================
+2017-10-12 14:16:13
+HA CAMBIADO EL HASH del fichero : ssii.txt, han modificado el archivo generando el hash: 63C33596074D6294663A7C76959A398716F828F609EF1CEAF476CD43557DA85E
+
+FAILED
+
