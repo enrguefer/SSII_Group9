@@ -5,7 +5,10 @@ import java.io.IOException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -20,6 +23,13 @@ public class principal {
 		List<String>datosFicheros=null;
 		List<Integer>auxiliar=new ArrayList<Integer>();
 		Boolean semaforoKPI=false;
+		
+		Date date=new Date();
+		DateFormat hora=new SimpleDateFormat("13:15");	//rutina KPI
+		int mensual=0;	//rutina mensual
+		
+		//System.out.println("hora que le paso: "+hora.format(date));
+		//semaforoKPI=KpiCalculator.compruebaDiario(semaforoKPI, hora);
 		
 		//pruebas de cifrado
 	/*	File log=new File("logs/l.txt");
@@ -51,10 +61,17 @@ public class principal {
 			while(true){
 				TimeUnit.SECONDS.sleep(Integer.parseInt(datosFicheros.get(3)));
 				
-				//comprobar fecha horas y tal del kpi
+				if(mensual>30)	//espera de 30 días de nuevo
+					mensual=0;
 				
+				//comprobar fecha horas y tal del kpi
+				if(semaforoKPI) {
+					semaforoKPI=KpiCalculator.compruebaDiario(semaforoKPI,hora,mensual);
+					if(!semaforoKPI)
+						mensual++;
+				}
 				comprobarDir.comprobarHash(dirInicial, "SHA-256",datosFicheros.get(1),datosFicheros.get(2),
-						0,0,auxiliar,dirInicial,semaforoKPI);
+						0,0,auxiliar,dirInicial,semaforoKPI,mensual);
 				
 				if(!semaforoKPI)
 					semaforoKPI=true;

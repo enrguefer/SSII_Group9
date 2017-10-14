@@ -32,15 +32,29 @@ public class KpiCalculator {
 		bw.close();
 	}
 	
+	public static void calculaKPIMensual() {
+		
+	}
 	
-	public static Boolean compruebaDiario(Boolean sm) {
+	
+	public static Boolean compruebaDiario(Boolean sm, DateFormat h, int contadorM) {
+		Boolean res=true;
+		
 		if(!sm) {
 			Date date = new Date();
 			DateFormat hourFormat = new SimpleDateFormat("HH:mm");
-			System.out.println("Hora: "+hourFormat.format(date));
+			
+			if(hourFormat.format(date).equals(h.format(date)))	//rutina diaria
+				res=false;
+			
+			if(contadorM==30) {		//mensual
+				res=false;
+			}
+			
+			//System.out.println("Hora: "+hourFormat.format(date));
 		}
 		
-		return null;
+		return res;
 	}
 	
 	
