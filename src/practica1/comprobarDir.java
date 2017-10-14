@@ -17,7 +17,7 @@ public class comprobarDir{
 
 	public static void comprobarHash(String dirInicial, String huella, String dirHash,String nHash,
 			int hashSuccess, int hashFailed,List<Integer>aux,String orgDir,
-			Boolean semaforoKPI, int mensual) throws NoSuchAlgorithmException, IOException{
+			Boolean semaforoKPI, int mensual,Integer contadorL) throws NoSuchAlgorithmException, IOException{
 			//System.out.println("DIRECTORIO : " +dirInicial);
 			
 			MessageDigest algorithm=MessageDigest.getInstance(huella);//CREAMOS LA HUELLA SHA-256
@@ -33,7 +33,7 @@ public class comprobarDir{
 			}else {
 				//System.out.println("ficheros: "+ficheros.length);
 				for (int x=0;x<ficheros.length;x++){
-					System.out.println(hashSuccess);
+					//System.out.println(hashSuccess);
 					if(aux.size()!=0) {
 						if(aux.get(0)>hashSuccess) {
 							hashSuccess=aux.get(0);
@@ -90,7 +90,7 @@ public class comprobarDir{
 					}catch(java.io.FileNotFoundException e){
 						//System.out.println("RECURSIVIDAD HASHSUCCESS: "+hashSuccess);
 						comprobarHash(dirInicial+metodos.compruebaSys()+ficheros[x],huella,dirHash,nHash,hashSuccess,
-								hashFailed,aux,orgDir,semaforoKPI,mensual);
+								hashFailed,aux,orgDir,semaforoKPI,mensual,contadorL);
 					}
 					
 				}
@@ -106,7 +106,7 @@ public class comprobarDir{
 				KpiCalculator.CalculaKPI(hashSuccess,hashFailed, totalFicheros,nHash,dirHash);
 				
 				if(mensual==30)
-					KpiCalculator.CalculaKPI(hashSuccess,hashFailed, totalFicheros,nHash,dirHash);
+					KpiCalculator.calculaKPIMensual(nHash, dirHash, contadorL);
 			}
 			
 	}

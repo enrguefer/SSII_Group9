@@ -23,6 +23,7 @@ public class principal {
 		List<String>datosFicheros=null;
 		List<Integer>auxiliar=new ArrayList<Integer>();
 		Boolean semaforoKPI=false;
+		Integer contadorL=0;
 		
 		Date date=new Date();
 		DateFormat hora=new SimpleDateFormat("13:15");	//rutina KPI
@@ -71,10 +72,12 @@ public class principal {
 						mensual++;
 				}
 				comprobarDir.comprobarHash(dirInicial, "SHA-256",datosFicheros.get(1),datosFicheros.get(2),
-						0,0,auxiliar,dirInicial,semaforoKPI,mensual);
+						0,0,auxiliar,dirInicial,semaforoKPI,mensual,contadorL);
 				
 				if(!semaforoKPI)
 					semaforoKPI=true;
+				
+				contadorL+=180;	//cada 30 días se generan 180 líneas de texto nuevas a tratar.
 				
 				TimeUnit.SECONDS.sleep(Integer.parseInt(datosFicheros.get(3)));
 			}

@@ -1,0 +1,12 @@
+=================================================
+Fecha y Hora: 2017-10-14 18:08:03
+archivos totales: 8
+fallos: 0
+Resultado: 1.0
+
+=================================================
+Fecha y Hora: 2017-10-14 18:45:16
+archivos totales: 8
+fallos: 0
+Resultado: 1.0
+

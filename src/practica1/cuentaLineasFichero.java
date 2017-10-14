@@ -1,14 +1,13 @@
 package practica1;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
 public class cuentaLineasFichero {
 
-	public static int cuentaLineas(String dirHash,String nHash) throws IOException{
-		FileReader f = new FileReader(dirHash+metodos.compruebaSys()+nHash); 
+	public static int cuentaLineas(String dirHash) throws IOException{
+		FileReader f = new FileReader(dirHash+metodos.compruebaSys()+"DailyKPI.txt"); 
         BufferedReader b1 = new BufferedReader(f);
         int lNumeroLineas = 0;
         
