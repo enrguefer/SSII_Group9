@@ -14,6 +14,8 @@ public class EscribeIncidencia {
 	
 	public static void escribeIncidencia(String cadena, String res) throws IOException{
 		
+		metodos.compruebaRuta("IncidenciasSeguridad", "incidenciasSeguridad.txt");
+		
 		File incidencias=new File("IncidenciasSeguridad"+metodos.compruebaSys()+"incidenciasSeguridad.txt");
 		BufferedWriter bw = new BufferedWriter(new FileWriter(incidencias,true));
 		Date date = new Date();

@@ -33,6 +33,19 @@ public class metodos {
 		
 	}
 	
+	public static void compruebaRuta(String dirHash,String nHash){
+		try{
+			@SuppressWarnings("unused")
+			File f=null;
+			if(nHash==null)
+				 f=new File(dirHash);
+			f=new File(dirHash+compruebaSys()+nHash);
+			
+		}catch(Exception e){
+			System.out.println("El directorio o fichero no existen: "+e.toString());
+		}
+	}
+	
 	public static void cifraAES(File log,File log2) throws NoSuchAlgorithmException, 
 			IllegalBlockSizeException, BadPaddingException, NoSuchPaddingException, InvalidKeyException, IOException, InvalidKeySpecException {
 		

@@ -8,9 +8,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.TimeZone;
 
 public class KpiCalculator {
@@ -19,7 +17,9 @@ public class KpiCalculator {
 	public static void CalculaKPI(int hashSuccess, int hashFailed, int total,String nHash,
 			String dirHash) throws IOException{
 		
-		File incidencias=new File(dirHash+metodos.compruebaSys()+"DailyKPI.txt");	//cambiar el defecto en confg.?
+		metodos.compruebaRuta(dirHash, nHash); //por si no está el fichero
+		
+		File incidencias=new File(dirHash+metodos.compruebaSys()+"DailyKPI.txt");	
 		BufferedWriter bw = new BufferedWriter(new FileWriter(incidencias,true));
 		Date date = new Date();
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -42,6 +42,7 @@ public class KpiCalculator {
 		Double res=0.0;
 		int ratios=0;
 		String linea;
+		metodos.compruebaRuta(dirHash, nHash);
 		
 		FileReader f = new FileReader(nameFile);
         BufferedReader b = new BufferedReader(f);
@@ -68,7 +69,7 @@ public class KpiCalculator {
         
         //escritura de fichero--
         
-        File kpiMensual=new File(dirHash+metodos.compruebaSys()+"MonthlyKPI.txt");	//cambiar el defecto en confg.?
+        File kpiMensual=new File(dirHash+metodos.compruebaSys()+"MonthlyKPI.txt");	
 		BufferedWriter bw = new BufferedWriter(new FileWriter(kpiMensual,true));
 		Date date = new Date();
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

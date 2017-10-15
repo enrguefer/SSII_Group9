@@ -18,6 +18,9 @@ public class lecturaDirs {
 			throws NoSuchAlgorithmException, IOException {
 		
 		MessageDigest algorithm=MessageDigest.getInstance("SHA-256");	//CREAMOS LA HUELLA SHA-256
+		
+		metodos.compruebaRuta(dirHash, nHash);	//comprobamos directorios
+		
 		File dir = new File(directorio);	//DIRECTORIO QUE VAMOS A MONITORIZAR
 		File dirlog=new File(dirHash+metodos.compruebaSys()+nHash);
 		

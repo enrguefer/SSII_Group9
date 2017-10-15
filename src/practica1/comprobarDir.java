@@ -18,22 +18,17 @@ public class comprobarDir{
 	public static void comprobarHash(String dirInicial, String huella, String dirHash,String nHash,
 			int hashSuccess, int hashFailed,List<Integer>aux,String orgDir,
 			Boolean semaforoKPI, int mensual,Integer contadorL) throws NoSuchAlgorithmException, IOException{
-			//System.out.println("DIRECTORIO : " +dirInicial);
 			
 			MessageDigest algorithm=MessageDigest.getInstance(huella);//CREAMOS LA HUELLA SHA-256
 			File dir = new File(dirInicial);
 			File dirlog=new File(dirHash+metodos.compruebaSys()+nHash);
 			String[] ficheros = dir.list();
 			
-			//KpiCalculator.recogeValores(hashFailed, hashSuccess);
-			
 			if (ficheros == null){
 				  System.out.println("No hay ficheros en el directorio especificado");
 				
 			}else {
-				//System.out.println("ficheros: "+ficheros.length);
 				for (int x=0;x<ficheros.length;x++){
-					//System.out.println(hashSuccess);
 					if(aux.size()!=0) {
 						if(aux.get(0)>hashSuccess) {
 							hashSuccess=aux.get(0);
@@ -74,9 +69,7 @@ public class comprobarDir{
 				        b1.close();
 				        if(control){
 				        	String z = "no ha cambiado el hash del fichero: "+fichero+"\n";
-				        	//System.out.println(z);
 				        	hashSuccess++;
-				        	//System.out.println("Nº Success2: "+hashSuccess);
 			        		//EscribeIncidencia.escribeIncidencia(z, "SUCCESS");
 			        	}else{
 			        		
@@ -88,15 +81,14 @@ public class comprobarDir{
 			        	}
 
 					}catch(java.io.FileNotFoundException e){
-						//System.out.println("RECURSIVIDAD HASHSUCCESS: "+hashSuccess);
 						comprobarHash(dirInicial+metodos.compruebaSys()+ficheros[x],huella,dirHash,nHash,hashSuccess,
 								hashFailed,aux,orgDir,semaforoKPI,mensual,contadorL);
 					}
 					
 				}
 				
-			}aux.add(hashSuccess);
-			//int totalFicheros = cuentaLineasFichero.cuentaLineas(dirHash, nHash);
+			}
+			aux.add(hashSuccess);
 			
 			if(dirInicial.equals(orgDir) && !semaforoKPI){
 				int totalFicheros =hashFailed+hashSuccess;
