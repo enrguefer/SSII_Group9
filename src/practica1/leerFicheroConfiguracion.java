@@ -62,9 +62,7 @@ public class leerFicheroConfiguracion {
 		if(dato.contains("3)") || dato.contains("5)")) {
 			for(int i=0;i<dato.length();i++) {
 				char c=dato.charAt(i);
-				//System.out.println(c);
 				if(c==':') {
-					//System.out.println(dato.charAt(i));
 					semaforo=true;
 				}else{
 					if(semaforo && c !=' ') {
@@ -79,9 +77,7 @@ public class leerFicheroConfiguracion {
 		if(dato.contains("4)")) {
 			for(int i=0;i<dato.length();i++) {
 				char c=dato.charAt(i);
-				//System.out.println(c);
 				if(c==':') {
-					//System.out.println(dato.charAt(i));
 					semaforo=true;
 				}else{
 					if(semaforo && c !=' ') {
@@ -89,9 +85,9 @@ public class leerFicheroConfiguracion {
 					}
 				}	
 			}try {
-				if(Integer.parseInt(res)<60) {
-					System.out.println("Valor inferior a 60, se establecerá por defecto al mínimo: 60.");
-					res="60";
+				if(Integer.parseInt(res)<15) {
+					System.out.println("Valor inferior a 15, se establecerá por defecto al mínimo: 15.");
+					res="15";
 				}
 				
 			}catch(Exception e) {
@@ -103,9 +99,7 @@ public class leerFicheroConfiguracion {
 		if(dato.contains("6)")) {
 			for(int i=0;i<dato.length();i++) {
 				char c=dato.charAt(i);
-				//System.out.println(c);
 				if(c==':') {
-					//System.out.println(dato.charAt(i));
 					semaforo=true;
 				}else{
 					if(semaforo && c !=' ') {
@@ -131,7 +125,7 @@ public class leerFicheroConfiguracion {
 		bw.newLine();
 		bw.write("3)Nombre del fichero hash sin extensión:logHash");
 		bw.newLine();
-		bw.write("4)Frecuencia en segundos para comprobar fichero hash (mínimo 60 segundos):60");
+		bw.write("4)Frecuencia en segundos para comprobar fichero hash (mínimo 15 segundos):20");
 		bw.newLine();
 		bw.write("5)Nombre del fichero de incidencias sin extensión:incidencias");
 		bw.newLine();

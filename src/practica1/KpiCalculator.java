@@ -27,7 +27,7 @@ public class KpiCalculator {
 		int hashSuccess=almacenK.get("+");
 		int hashFailed=almacenK.get("-");
 		
-		float kpi = (float)(hashSuccess+hashFailed)/total;//Calculo del KPI
+		float kpi = (float)(total-hashFailed)/total;//Calculo del KPI
 		
 		bw.write("====================KPI-"+contKPID+"=============================\n");
 		bw.write("Fecha y Hora: "+df.format(date)+"\n");

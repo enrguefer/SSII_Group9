@@ -10,7 +10,6 @@ import java.security.DigestInputStream;
 import java.security.InvalidKeyException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -73,10 +72,7 @@ public class comprobarDir{
 				        		 cadena=cadena.substring(0,cadena.length()-1);
 				        	 	}
 
-				        	 	//System.out.println("VAMOS A COMPARAR "+"["+ficheros[x]+","+DatatypeConverter.printHexBinary(digest)+"]_CON_"+cadena);
 				        	 	if(cadena.equals("["+ficheros[x]+","+DatatypeConverter.printHexBinary(digest)+"]")){
-				        	 		//System.out.println("NO HA CAMBIADO EL HASH");
-				        	 		//System.out.println("\n");
 				        	 		control=true;
 				        	 		break;
 				        	 	}else
@@ -85,14 +81,11 @@ public class comprobarDir{
 				        
 				        b1.close();
 				        if(control){
-				        	//String z = "no ha cambiado el hash del fichero: "+fichero+"\n";
 				        	hashSuccess++;
 				        	existencia=true;
-			        		//EscribeIncidencia.escribeIncidencia(z, "SUCCESS");
 			        	}else{
 			        		existencia=true;
 			        		String y = "HA CAMBIADO EL HASH del fichero : "+fichero+", han modificado el archivo generando el hash: "+DatatypeConverter.printHexBinary(digest)+"\n";
-			        		//System.out.println(y);
 			        		hashFailed++;
 			        		EscribeIncidencia.escribeIncidencia(y, "FAILED",dirHash);
 				        
@@ -119,9 +112,6 @@ public class comprobarDir{
 			
 			if(dirInicial.equals(orgDir) && !semaforoKPI){
 				int totalFicheros =hashFailed+hashSuccess;
-				/*System.out.println("Nº Success: "+hashSuccess);
-				System.out.println("Nº Failed: "+hashFailed);
-				System.out.println("Nº Files: "+totalFicheros);*/
 				float ratio=KpiCalculator.CalculaKPI(totalFicheros,nHash,dirHash,almacenK,contKPID);
 				almacenRatio.put("*", ratio);
 				almacenRatio.put("total", almacenRatio.get("total")+(float)1);

@@ -27,7 +27,7 @@ public class principal {
 		Boolean semaforoCifrado=false;
 		SecretKey key=null;
 		
-		DateFormat hora=new SimpleDateFormat("18");	//rutina KPI
+		DateFormat hora=new SimpleDateFormat("20");	//rutina KPI
 		int mensual=1;	//rutina mensual
 		almacenRatio.put("total", (float) 0);
 		Integer contKPID=0;

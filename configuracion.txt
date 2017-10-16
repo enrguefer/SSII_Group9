@@ -1,6 +1,6 @@
 1)Ruta que analiza:directorioArchivos
 2)Directorio del fichero hash:logs
 3)Nombre del fichero hash sin extensión:logHash
-4)Frecuencia en segundos para comprobar la integridad (mínimo 60 segundos):30
+4)Frecuencia en segundos para comprobar la integridad (mínimo 15 segundos):30
 5)Nombre del fichero de incidencias sin extensión:incidencias
 6)Nombre del algoritmo que se usará para la integridad:SHA-256
