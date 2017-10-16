@@ -27,7 +27,7 @@ public class KpiCalculator {
 		int hashSuccess=almacenK.get("+");
 		int hashFailed=almacenK.get("-");
 		
-		float kpi = (float)(total-hashFailed)/total;//Calculo del KPI
+		float kpi = (float)(hashSuccess)/total;//Calculo del KPI
 		
 		bw.write("====================KPI-"+contKPID+"=============================\n");
 		bw.write("Fecha y Hora: "+df.format(date)+"\n");
@@ -67,14 +67,14 @@ public class KpiCalculator {
 	}
 	
 	
-	public static Boolean compruebaDiario(Boolean sm, DateFormat h, int contadorM) {
+	public static Boolean compruebaDiario(Boolean sm, DateFormat h, int contadorM, Boolean sh) {
 		Boolean res=true;
 		
 		if(sm) {
 			Date date = new Date();
 			DateFormat hourFormat = new SimpleDateFormat("HH");
 			
-			if(hourFormat.format(date).equals(h.format(date)))	//rutina diaria
+			if(hourFormat.format(date).equals(h.format(date)) && !sh )	//rutina diaria
 				res=false;
 			
 			if(contadorM==30) {		//mensual

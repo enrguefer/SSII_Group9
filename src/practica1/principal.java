@@ -6,6 +6,7 @@ import java.security.NoSuchAlgorithmException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,8 +24,10 @@ public class principal {
 		List<Integer>aux2=new ArrayList<Integer>();
 		Map<String,Integer>almacenKPI=new HashMap<String,Integer>();
 		Map<String,Float>almacenRatio=new HashMap<String,Float>();
+		Date date = new Date();
 		Boolean semaforoKPI=false;
 		Boolean semaforoCifrado=false;
+		Boolean kpiHora=false;
 		SecretKey key=null;
 		
 		DateFormat hora=new SimpleDateFormat("20");	//rutina KPI
@@ -47,6 +50,10 @@ public class principal {
 		System.out.println("==========================================================");
 		try {
 			while(true){
+				DateFormat hourFormat = new SimpleDateFormat("HH");
+				
+				if(Integer.parseInt(hourFormat.format(date)) > Integer.parseInt(hora.format(date)))
+					kpiHora=false;
 				
 				if(mensual>30) {	//espera de 30 días de nuevo
 					mensual=0;
@@ -54,10 +61,11 @@ public class principal {
 				}
 				//comprobar fecha horas y tal del kpi
 				if(semaforoKPI) {
-					semaforoKPI=KpiCalculator.compruebaDiario(semaforoKPI,hora,mensual);
+					semaforoKPI=KpiCalculator.compruebaDiario(semaforoKPI,hora,mensual,kpiHora);
 					if(!semaforoKPI) {
 						mensual++;
 						contKPID++;
+						kpiHora=true;
 					}
 				}
 				
