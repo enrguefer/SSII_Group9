@@ -14,10 +14,10 @@ import javax.xml.bind.DatatypeConverter;
 
 public class lecturaDirs {
 	
-	public static void leeDirectorios(String directorio,String dirHash,String nHash) 
+	public static void leeDirectorios(String directorio,String dirHash,String nHash,String alg) 
 			throws NoSuchAlgorithmException, IOException {
 		
-		MessageDigest algorithm=MessageDigest.getInstance("SHA-256");	//CREAMOS LA HUELLA SHA-256
+		MessageDigest algorithm=MessageDigest.getInstance(alg);	//CREAMOS LA HUELLA SHA-256
 		
 		metodos.compruebaRuta(dirHash, nHash);	//comprobamos directorios
 		
@@ -58,7 +58,7 @@ public class lecturaDirs {
 					System.out.println("Fichero "+ficheros[i]+", HASH: "+DatatypeConverter.printHexBinary(digest));
 					
 				}catch(java.io.FileNotFoundException e) {
-					leeDirectorios(directorio+metodos.compruebaSys()+ficheros[i],dirHash,nHash);
+					leeDirectorios(directorio+metodos.compruebaSys()+ficheros[i],dirHash,nHash,alg);
 				}
 			
 			}//fin bloque for

@@ -1,23 +1,22 @@
 package practica1;
 
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Map;
 import java.util.TimeZone;
 
 public class KpiCalculator {
 
 	
-	public static void CalculaKPI(int hashSuccess, int hashFailed, int total,String nHash,
-			String dirHash) throws IOException{
+	public static float CalculaKPI(int total,String nHash,String dirHash,Map<String,Integer>almacenK,Integer contKPID) 
+			throws IOException{
 		
-		metodos.compruebaRuta(dirHash, nHash); //por si no está el fichero
+		metodos.compruebaRuta(dirHash, nHash); //por si no estï¿½ el fichero
 		
 		File incidencias=new File(dirHash+metodos.compruebaSys()+"DailyKPI.txt");	
 		BufferedWriter bw = new BufferedWriter(new FileWriter(incidencias,true));
@@ -25,48 +24,29 @@ public class KpiCalculator {
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		df.setTimeZone(TimeZone.getTimeZone("Europe/Madrid"));
 		
+		int hashSuccess=almacenK.get("+");
+		int hashFailed=almacenK.get("-");
+		
 		float kpi = (float)(hashSuccess+hashFailed)/total;//Calculo del KPI
 		
-		bw.write("=================================================\n");
+		bw.write("====================KPI-"+contKPID+"=============================\n");
 		bw.write("Fecha y Hora: "+df.format(date)+"\n");
 		bw.write("archivos totales: "+total+"\n");
 		bw.write("fallos: "+hashFailed+"\n");
 		bw.write("Resultado: "+kpi+"\n");
 		bw.write("\n");
 		bw.close();
+		
+		return kpi;
 	}
 	
-	public static void calculaKPIMensual(String nHash,String dirHash,Integer contadorL) throws IOException {
-		String nameFile=dirHash+metodos.compruebaSys()+"DailyKPI.txt";
+	public static void calculaKPIMensual(String nHash,String dirHash,Map<String,Float>almacen,Integer contKPIM)
+			throws IOException {
 		
-		Double res=0.0;
-		int ratios=0;
-		String linea;
-		metodos.compruebaRuta(dirHash, nHash);
+		Float res=almacen.get("*");
+		Float ratios=almacen.get("total");
 		
-		FileReader f = new FileReader(nameFile);
-        BufferedReader b = new BufferedReader(f);
-        
-        for(Integer i=0;i<cuentaLineasFichero.cuentaLineas(dirHash);i++) {
-        	
-        	linea = b.readLine();
-        	
-        	if(contadorL>=i && linea!=null) {
-        		res+=Double.parseDouble(tratamientoDatos(linea));	//agregamos los parÃ¡metros
-            	ratios++;
-        	}
-        	
-        	
-        }
-        
-        
-        try {
-			b.close();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-        
+		metodos.compruebaRuta(dirHash, nHash);        
         //escritura de fichero--
         
         File kpiMensual=new File(dirHash+metodos.compruebaSys()+"MonthlyKPI.txt");	
@@ -75,9 +55,9 @@ public class KpiCalculator {
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		df.setTimeZone(TimeZone.getTimeZone("Europe/Madrid"));
 		
-		Double kpi = res/ratios;
+		Float kpi = res/ratios;
 		
-		bw.write("=================================================\n");
+		bw.write("=====================KPI-"+contKPIM+"============================\n");
 		bw.write("Fecha y Hora: "+df.format(date)+"\n");
 		bw.write("Resultado: "+kpi+"\n");
 		bw.write("\n");
@@ -90,9 +70,9 @@ public class KpiCalculator {
 	public static Boolean compruebaDiario(Boolean sm, DateFormat h, int contadorM) {
 		Boolean res=true;
 		
-		if(!sm) {
+		if(sm) {
 			Date date = new Date();
-			DateFormat hourFormat = new SimpleDateFormat("HH:mm");
+			DateFormat hourFormat = new SimpleDateFormat("HH");
 			
 			if(hourFormat.format(date).equals(h.format(date)))	//rutina diaria
 				res=false;

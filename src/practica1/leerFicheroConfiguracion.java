@@ -30,7 +30,7 @@ public class leerFicheroConfiguracion {
 			e.printStackTrace();
 		}
         
-        if(res.size()>4) {
+        if(res.size()>6) {
         	System.out.println("El tamño del fichero de configuración es mayor del esperado. Se restaurará por defecto");
         	restablecerFichero();
         }
@@ -59,7 +59,7 @@ public class leerFicheroConfiguracion {
 		} //fin lectura 1 y 2.
 		
 		
-		if(dato.contains("3)")) {
+		if(dato.contains("3)") || dato.contains("5)")) {
 			for(int i=0;i<dato.length();i++) {
 				char c=dato.charAt(i);
 				//System.out.println(c);
@@ -74,7 +74,7 @@ public class leerFicheroConfiguracion {
 					}
 				}	
 			}res+=".txt";
-		}//fin lectura 3
+		}//fin lectura 3 y 5
 		
 		if(dato.contains("4)")) {
 			for(int i=0;i<dato.length();i++) {
@@ -89,11 +89,33 @@ public class leerFicheroConfiguracion {
 					}
 				}	
 			}try {
-				Integer.parseInt(res);
+				if(Integer.parseInt(res)<60) {
+					System.out.println("Valor inferior a 60, se establecerá por defecto al mínimo: 60.");
+					res="60";
+				}
+				
 			}catch(Exception e) {
 				System.out.println("no es un número.");
 			}
 		}//fin lectura 4
+		
+		
+		if(dato.contains("6)")) {
+			for(int i=0;i<dato.length();i++) {
+				char c=dato.charAt(i);
+				//System.out.println(c);
+				if(c==':') {
+					//System.out.println(dato.charAt(i));
+					semaforo=true;
+				}else{
+					if(semaforo && c !=' ') {
+						if(c=='.')
+							break;	//por si acaso pone la extensión
+						res+=c;
+					}
+				}	
+			}res=res.toUpperCase();
+		}//fin lectura 6
 		
 		
 		return res;
@@ -109,7 +131,11 @@ public class leerFicheroConfiguracion {
 		bw.newLine();
 		bw.write("3)Nombre del fichero hash sin extensión:logHash");
 		bw.newLine();
-		bw.write("4)Frecuencia en segundos para comprobar fichero hash:35");
+		bw.write("4)Frecuencia en segundos para comprobar fichero hash (mínimo 60 segundos):60");
+		bw.newLine();
+		bw.write("5)Nombre del fichero de incidencias sin extensión:incidencias");
+		bw.newLine();
+		bw.write("6)Nombre del algoritmo que se usará para la integridad:SHA-256");
 		bw.close();
 	}
 	
